@@ -14,8 +14,10 @@ function nextSequence() {
   return randomNumber;
 }
 
+// choose random color and add to end of gamePattern list
 var randomChosenColour = buttonColours[nextSequence()];
-
 gamePattern.push(randomChosenColour);
 
-console.log(gamePattern);
+// console.log(gamePattern);
+
+// jQuery select button with same id
