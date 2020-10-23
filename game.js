@@ -2,6 +2,7 @@
 
 
 var gamePattern = [];
+var userClickedPattern = [];
 
 // function: generate a random number 0-3
 function nextSequence() {
@@ -20,16 +21,24 @@ function nextSequence() {
   var fadeDuration = 100;
   $("#" + randomChosenColour).fadeOut(fadeDuration).fadeIn(fadeDuration).fadeOut(fadeDuration).fadeIn(fadeDuration);
 
-  // play sound
-  var playSound = new Audio("sounds/" + randomChosenColour + ".mp3");
-  playSound.play();
+  playSound(randomChosenColour);
 
 }
 
-nextSequence();
+function playSound(name) {
+  // play sound
+  var playSound = new Audio("sounds/" + name + ".mp3");
+  playSound.play();
+}
+
+nextSequence()
 
 // event listener
 $(".btn").click(function() {
   var userChosenColour = $(this).attr("id");
-  console.log(userChosenColour);
+  // console.log(userChosenColour);
+  userClickedPattern.push(userChosenColour);
+  // console.log(userClickedPattern);
+
+  playSound(userChosenColour);
 });
