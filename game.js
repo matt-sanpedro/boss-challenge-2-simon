@@ -3,6 +3,7 @@
 
 var gamePattern = [];
 var userClickedPattern = [];
+var level = 0;
 
 // function: generate a random number 0-3
 function nextSequence() {
@@ -23,6 +24,9 @@ function nextSequence() {
 
   playSound(randomChosenColour);
 
+  level+=1;
+  $("h1").text("Level " + level);
+  // console.log(level);
 }
 
 function playSound(name) {
@@ -38,7 +42,7 @@ function animatePress(currentColor) {
   }, 100);
 }
 
-// event listener
+// event listener: button click
 $(".btn").click(function() {
   var userChosenColour = $(this).attr("id");
   // console.log(userChosenColour);
@@ -47,4 +51,10 @@ $(".btn").click(function() {
 
   playSound(userChosenColour);
   animatePress(userChosenColour);
+});
+
+// event listener: press any key to start
+$(document).keypress(function() {
+  // console.log($(this));
+  $(this).on(nextSequence());
 });
