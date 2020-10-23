@@ -31,7 +31,12 @@ function playSound(name) {
   playSound.play();
 }
 
-nextSequence()
+function animatePress(currentColor) {
+  $("#" + currentColor).addClass("pressed");
+  setTimeout(function () {
+    $("#" + currentColor).removeClass("pressed");
+  }, 100);
+}
 
 // event listener
 $(".btn").click(function() {
@@ -41,4 +46,5 @@ $(".btn").click(function() {
   // console.log(userClickedPattern);
 
   playSound(userChosenColour);
+  animatePress(userChosenColour);
 });
