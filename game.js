@@ -47,6 +47,7 @@ function animatePress(currentColor) {
 // event listener: press any key to start
 $(document).keypress(function() {
   // console.log($(this));
+  startOver();
   $(this).on(nextSequence());
 });
 
