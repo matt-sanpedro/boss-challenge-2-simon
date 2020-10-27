@@ -30,14 +30,9 @@ function nextSequence() {
   $("h1").text("Level " + level);
   // console.log(level);
 
-
-
-  // checkAnswer(userClickedPattern.length-1);
-
 }
 
 function playSound(name) {
-  // play sound
   var playSound = new Audio("sounds/" + name + ".mp3");
   playSound.play();
 }
@@ -76,10 +71,22 @@ $(".btn").click(function() {
 // check answer function
 function checkAnswer(currentLevel) {
   // console.log(currentLevel);
-  console.log(userClickedPattern, gamePattern);
+  // console.log(userClickedPattern, gamePattern);
   if (userClickedPattern[currentLevel] === gamePattern[currentLevel]) {
     console.log('Success');
   } else {
     console.log('Wrong');
+    playSound('wrong');
+    $("body").addClass("game-over");
+    setTimeout(function () {
+      $("body").removeClass("game-over");
+    }, 200);
+    $("h1").text("Game Over, Press Any Key to Restart");
+    startOver();
   }
+}
+
+function startOver() {
+  level = 0;
+  gamePattern = [];
 }
